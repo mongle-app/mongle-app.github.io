@@ -26,6 +26,9 @@
     .sep{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;margin:22px 0 8px}
     .sep::before,.sep::after{content:"";flex:1;height:1px;background:var(--line)}
     .foot{color:var(--muted);font-size:12px;margin-top:26px}
+    .hint{background:var(--card);border:1px solid var(--line);border-radius:12px;
+          padding:14px 16px;font-size:13px;line-height:1.6;color:var(--fg);margin:2px 0 10px;text-align:left}
+    .hint b{color:var(--primary)}
   </style>
 </head>
 <body>
@@ -34,6 +37,11 @@
     <h1>Mongle</h1>
     <p class="who" id="who">Профайлыг Mongle аппликейшнээр үзнэ үү.</p>
     <button class="btn" id="open">Аппаар нээх</button>
+    <div class="hint" id="hint" hidden>
+      ⚠️ Энэ нь <b>Messenger доторх browser</b> тул апп нээгдэхгүй.
+      Баруун дээд <b>⋮</b> цэс → <b>"Chrome-оор нээх"</b> сонгоод дахин орж
+      "Аппаар нээх" дарна уу.
+    </div>
     <div class="sep">эсвэл апп татах</div>
     <a class="btn ghost" href="https://github.com/mongle-app/mongle/releases/latest/download/mongle.apk">Android (APK)</a>
     <span class="btn ghost" style="opacity:.5">iOS (удахгүй)</span>
@@ -44,10 +52,18 @@
     var ua = navigator.userAgent || '';
     var isAndroid = /android/i.test(ua);
     var isIOS = /iphone|ipad|ipod/i.test(ua);
+    // In-app browser (Messenger/FB/Instagram/Line г.м.) — App Links ажилладаггүй,
+    // intent:// блоклогддог тул "Аппаар нээх" оронд заавар харуулна.
+    var isInApp = /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram|Line\/|MicroMessenger|Twitter/i.test(ua);
 
     if (username) {
       document.getElementById('who').innerHTML =
         '<span class="u">@' + username + '</span> профайлыг Mongle аппликейшнээр үзнэ үү.';
+    }
+
+    if (isInApp) {
+      document.getElementById('open').style.display = 'none';
+      document.getElementById('hint').hidden = false;
     }
 
     document.getElementById('open').addEventListener('click', function () {
