@@ -9,11 +9,12 @@
     :root{--bg:#070A11;--card:#0E131C;--fg:#E8ECF3;--muted:#9AA3B2;--primary:#2F6BFF;--line:#1E2632}
     *{box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
-         background:#12203f;
+         background:radial-gradient(1100px 560px at 50% -12%,#12203f 0%,var(--bg) 58%);
          color:var(--fg);display:flex;min-height:100vh;margin:0;align-items:center;
          justify-content:center;padding:24px}
     .card{width:100%;max-width:360px;text-align:center}
-    .logo{width:96px;height:96px;border-radius:24px;object-fit:cover;margin-bottom:18px}
+    .logo{width:96px;height:96px;border-radius:24px;object-fit:cover;
+          box-shadow:0 12px 44px rgba(47,107,255,.38);margin-bottom:18px}
     h1{font-size:26px;margin:0 0 6px;letter-spacing:.2px}
     .tag{color:var(--muted);font-size:15px;margin:0 0 28px}
     .btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;
