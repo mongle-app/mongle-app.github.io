@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mongle</title>
+  <style>
+    body{font-family:-apple-system,system-ui,sans-serif;background:#070A11;color:#E8ECF3;
+         display:flex;min-height:100vh;margin:0;align-items:center;justify-content:center;text-align:center}
+    .c{max-width:420px;padding:24px}
+    h1{font-size:26px;margin:6px 0}
+    .u{color:#2F6BFF;font-weight:600}
+    a.btn{display:block;margin:10px 0;padding:14px;border-radius:12px;background:#2F6BFF;color:#fff;
+          text-decoration:none;font-weight:600}
+    a.ghost{background:#1E2632;color:#E8ECF3}
+    p{color:#9AA3B2;margin:14px 0}
+  </style>
+</head>
+<body>
+  <div class="c">
+    <h1>Mongle</h1>
+    <p id="who">Профайлыг Mongle аппаар нээнэ үү</p>
+    <a class="btn" id="open" href="#">Аппаар нээх</a>
+    <a class="btn ghost" href="https://github.com/mongle-app/mongle/releases/latest/download/mongle.apk">Android татах (APK)</a>
+    <a class="btn ghost" href="#">iOS (TestFlight) — удахгүй</a>
+  </div>
+  <script>
+    // /u/<username> замаас username-ийг уншиж харуулна + аппаар нээхийг оролдоно.
+    var m = location.pathname.match(/^\/u\/([^\/?#]+)/);
+    if (m && m[1]) {
+      var name = decodeURIComponent(m[1]);
+      document.getElementById('who').innerHTML =
+        '<span class="u">@' + name + '</span> профайлыг Mongle аппаар нээнэ үү';
+      // App суусан бол universal link аль хэдийн аппыг нээсэн байна; энд дахин оролдоно.
+      document.getElementById('open').href = location.href;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["977Y4H46W2.mn.bilguun.mongle"],
+        "components": [
+          { "/": "/u/*", "comment": "User profile links" }
+        ]
+      }
+    ]
+  }
+}
