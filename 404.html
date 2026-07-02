@@ -13,13 +13,13 @@
          color:var(--fg);display:flex;min-height:100vh;margin:0;align-items:center;
          justify-content:center;padding:24px}
     .card{width:100%;max-width:360px;text-align:center}
-    .logo{width:88px;height:88px;border-radius:22px;object-fit:cover;
+    .logo{width:88px;height:88px;border-radius:12px;object-fit:cover;
           box-shadow:0 12px 44px rgba(47,107,255,.38);margin-bottom:18px}
     h1{font-size:22px;margin:0 0 6px;letter-spacing:.2px}
     .who{color:var(--muted);font-size:15px;line-height:1.5;margin:0 0 26px}
     .u{color:var(--primary);font-weight:700}
     .btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;
-         padding:15px;border-radius:14px;background:var(--primary);color:#fff;text-decoration:none;
+         padding:15px;border-radius:12px;background:var(--primary);color:#fff;text-decoration:none;
          font-weight:600;font-size:15px;border:none;width:100%;cursor:pointer;font-family:inherit}
     .btn:active{opacity:.85}
     .btn.ghost{background:var(--card);color:var(--fg);border:1px solid var(--line)}
@@ -32,12 +32,11 @@
   <div class="card">
     <img class="logo" src="/logo.png" alt="Mongle">
     <h1>Mongle</h1>
-    <p class="who" id="who">Профайлыг Mongle аппаар үзнэ үү</p>
+    <p class="who" id="who">Профайлыг Mongle аппаар үзнэ үү.</p>
     <button class="btn" id="open">Аппаар нээх</button>
     <div class="sep">эсвэл апп татах</div>
     <a class="btn ghost" href="https://github.com/mongle-app/mongle/releases/latest/download/mongle.apk">Android (APK)</a>
     <a class="btn ghost" id="ios" href="#">iOS (App Store) — удахгүй</a>
-    <p class="foot">Монголчуудын шинэ сошиал</p>
   </div>
   <script>
     var m = location.pathname.match(/^\/u\/([^\/?#]+)/);
@@ -48,7 +47,7 @@
 
     if (username) {
       document.getElementById('who').innerHTML =
-        '<span class="u">@' + username + '</span> профайлыг<br>Mongle аппаар үзнэ үү';
+        '<span class="u">@' + username + '</span> профайлыг Mongle аппаар үзнэ үү.';
     }
 
     document.getElementById('open').addEventListener('click', function () {
