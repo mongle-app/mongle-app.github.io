@@ -4,23 +4,35 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mongle</title>
+  <link rel="icon" href="/logo.png">
   <style>
-    body{font-family:-apple-system,system-ui,sans-serif;background:#070A11;color:#E8ECF3;
-         display:flex;min-height:100vh;margin:0;align-items:center;justify-content:center;text-align:center}
-    .c{max-width:420px;padding:24px}
-    h1{font-size:28px;margin:8px 0}
-    a.btn{display:block;margin:10px 0;padding:14px;border-radius:12px;background:#2F6BFF;color:#fff;
-          text-decoration:none;font-weight:600}
-    a.ghost{background:#1E2632;color:#E8ECF3}
-    p{color:#9AA3B2}
+    :root{--bg:#070A11;--card:#0E131C;--fg:#E8ECF3;--muted:#9AA3B2;--primary:#2F6BFF;--line:#1E2632}
+    *{box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+         background:radial-gradient(1100px 560px at 50% -12%,#12203f 0%,var(--bg) 58%);
+         color:var(--fg);display:flex;min-height:100vh;margin:0;align-items:center;
+         justify-content:center;padding:24px}
+    .card{width:100%;max-width:360px;text-align:center}
+    .logo{width:96px;height:96px;border-radius:24px;object-fit:cover;
+          box-shadow:0 12px 44px rgba(47,107,255,.38);margin-bottom:18px}
+    h1{font-size:26px;margin:0 0 6px;letter-spacing:.2px}
+    .tag{color:var(--muted);font-size:15px;margin:0 0 28px}
+    .btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;
+         padding:15px;border-radius:14px;background:var(--primary);color:#fff;text-decoration:none;
+         font-weight:600;font-size:15px;border:none;width:100%}
+    .btn:active{opacity:.85}
+    .btn.ghost{background:var(--card);color:var(--fg);border:1px solid var(--line)}
+    .foot{color:var(--muted);font-size:12px;margin-top:26px}
   </style>
 </head>
 <body>
-  <div class="c">
+  <div class="card">
+    <img class="logo" src="/logo.png" alt="Mongle">
     <h1>Mongle</h1>
-    <p>Монголчуудын шинэ сошиал</p>
+    <p class="tag">Монголчуудын шинэ сошиал</p>
     <a class="btn" href="https://github.com/mongle-app/mongle/releases/latest/download/mongle.apk">Android татах (APK)</a>
-    <a class="btn ghost" href="#">iOS (TestFlight) — удахгүй</a>
+    <a class="btn ghost" href="#">iOS (App Store) — удахгүй</a>
+    <p class="foot">© Mongle</p>
   </div>
 </body>
 </html>

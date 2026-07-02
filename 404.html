@@ -4,36 +4,66 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mongle</title>
+  <link rel="icon" href="/logo.png">
   <style>
-    body{font-family:-apple-system,system-ui,sans-serif;background:#070A11;color:#E8ECF3;
-         display:flex;min-height:100vh;margin:0;align-items:center;justify-content:center;text-align:center}
-    .c{max-width:420px;padding:24px}
-    h1{font-size:26px;margin:6px 0}
-    .u{color:#2F6BFF;font-weight:600}
-    a.btn{display:block;margin:10px 0;padding:14px;border-radius:12px;background:#2F6BFF;color:#fff;
-          text-decoration:none;font-weight:600}
-    a.ghost{background:#1E2632;color:#E8ECF3}
-    p{color:#9AA3B2;margin:14px 0}
+    :root{--bg:#070A11;--card:#0E131C;--fg:#E8ECF3;--muted:#9AA3B2;--primary:#2F6BFF;--line:#1E2632}
+    *{box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+         background:radial-gradient(1100px 560px at 50% -12%,#12203f 0%,var(--bg) 58%);
+         color:var(--fg);display:flex;min-height:100vh;margin:0;align-items:center;
+         justify-content:center;padding:24px}
+    .card{width:100%;max-width:360px;text-align:center}
+    .logo{width:88px;height:88px;border-radius:22px;object-fit:cover;
+          box-shadow:0 12px 44px rgba(47,107,255,.38);margin-bottom:18px}
+    h1{font-size:22px;margin:0 0 6px;letter-spacing:.2px}
+    .who{color:var(--muted);font-size:15px;line-height:1.5;margin:0 0 26px}
+    .u{color:var(--primary);font-weight:700}
+    .btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;
+         padding:15px;border-radius:14px;background:var(--primary);color:#fff;text-decoration:none;
+         font-weight:600;font-size:15px;border:none;width:100%;cursor:pointer;font-family:inherit}
+    .btn:active{opacity:.85}
+    .btn.ghost{background:var(--card);color:var(--fg);border:1px solid var(--line)}
+    .sep{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;margin:22px 0 8px}
+    .sep::before,.sep::after{content:"";flex:1;height:1px;background:var(--line)}
+    .foot{color:var(--muted);font-size:12px;margin-top:26px}
   </style>
 </head>
 <body>
-  <div class="c">
+  <div class="card">
+    <img class="logo" src="/logo.png" alt="Mongle">
     <h1>Mongle</h1>
-    <p id="who">Профайлыг Mongle аппаар нээнэ үү</p>
-    <a class="btn" id="open" href="#">Аппаар нээх</a>
-    <a class="btn ghost" href="https://github.com/mongle-app/mongle/releases/latest/download/mongle.apk">Android татах (APK)</a>
-    <a class="btn ghost" href="#">iOS (TestFlight) — удахгүй</a>
+    <p class="who" id="who">Профайлыг Mongle аппаар үзнэ үү</p>
+    <button class="btn" id="open">Аппаар нээх</button>
+    <div class="sep">эсвэл апп татах</div>
+    <a class="btn ghost" href="https://github.com/mongle-app/mongle/releases/latest/download/mongle.apk">Android (APK)</a>
+    <a class="btn ghost" id="ios" href="#">iOS (App Store) — удахгүй</a>
+    <p class="foot">Монголчуудын шинэ сошиал</p>
   </div>
   <script>
-    // /u/<username> замаас username-ийг уншиж харуулна + аппаар нээхийг оролдоно.
     var m = location.pathname.match(/^\/u\/([^\/?#]+)/);
-    if (m && m[1]) {
-      var name = decodeURIComponent(m[1]);
+    var username = m && m[1] ? decodeURIComponent(m[1]) : null;
+    var ua = navigator.userAgent || '';
+    var isAndroid = /android/i.test(ua);
+    var isIOS = /iphone|ipad|ipod/i.test(ua);
+
+    if (username) {
       document.getElementById('who').innerHTML =
-        '<span class="u">@' + name + '</span> профайлыг Mongle аппаар нээнэ үү';
-      // App суусан бол universal link аль хэдийн аппыг нээсэн байна; энд дахин оролдоно.
-      document.getElementById('open').href = location.href;
+        '<span class="u">@' + username + '</span> профайлыг<br>Mongle аппаар үзнэ үү';
     }
+
+    document.getElementById('open').addEventListener('click', function () {
+      if (!username) { location.href = '/'; return; }
+      var u = encodeURIComponent(username);
+      if (isAndroid) {
+        // v1.0.5-ийн App Links intent-filter-ыг package-аар шууд онилж нээнэ
+        // (browser доторх ижил-домэйн хязгаарлалтыг тойроно).
+        location.href = 'intent://mongle-app.github.io/u/' + u +
+          '#Intent;scheme=https;package=mn.bilguun.mongle;end';
+      } else if (isIOS) {
+        // Custom scheme — v1.0.6-д бүртгэгдэнэ (одоохондоо ажиллахгүй байж болно).
+        location.href = 'mongle://u/' + u;
+      }
+    });
   </script>
 </body>
 </html>
