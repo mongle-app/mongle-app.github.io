@@ -9,12 +9,11 @@
     :root{--bg:#070A11;--card:#0E131C;--fg:#E8ECF3;--muted:#9AA3B2;--primary:#2F6BFF;--line:#1E2632}
     *{box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
-         background:radial-gradient(1100px 560px at 50% -12%,#12203f 0%,var(--bg) 58%);
+         background:var(--bg);
          color:var(--fg);display:flex;min-height:100vh;margin:0;align-items:center;
          justify-content:center;padding:24px}
     .card{width:100%;max-width:360px;text-align:center}
-    .logo{width:88px;height:88px;border-radius:12px;object-fit:cover;
-          box-shadow:0 12px 44px rgba(47,107,255,.38);margin-bottom:18px}
+    .logo{width:88px;height:88px;border-radius:12px;object-fit:cover;margin-bottom:18px}
     h1{font-size:22px;margin:0 0 6px;letter-spacing:.2px}
     .who{color:var(--muted);font-size:15px;line-height:1.5;margin:0 0 26px}
     .u{color:var(--primary);font-weight:700}
@@ -35,7 +34,7 @@
   <div class="card">
     <img class="logo" src="/logo.png" alt="Mongle">
     <h1>Mongle</h1>
-    <p class="who" id="who">Профайлыг Mongle аппликейшнээр үзнэ үү.</p>
+    <p class="who" id="who">Профайлыг аппликейшнээр үзнэ үү.</p>
     <button class="btn" id="open">Аппаар нээх</button>
     <div class="hint" id="hint" hidden>
       ⚠️ Энэ нь <b>Messenger доторх browser</b> тул апп нээгдэхгүй.
@@ -58,7 +57,7 @@
 
     if (username) {
       document.getElementById('who').innerHTML =
-        '<span class="u">@' + username + '</span> профайлыг Mongle аппликейшнээр үзнэ үү.';
+        '<span class="u">@' + username + '</span> профайлыг аппликейшнээр үзнэ үү.';
     }
 
     if (isInApp) {
