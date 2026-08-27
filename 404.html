@@ -6,15 +6,17 @@
   <title>Mongle</title>
   <link rel="icon" href="/logo.png">
   <style>
-    :root{--bg:#070A11;--card:#0E131C;--fg:#E8ECF3;--muted:#9AA3B2;--primary:#2F6BFF;--line:#1E2632}
+    /* Аппын палитраас ШУУД (lib/theme/tokens): canvas n950 · raised n900 ·
+       contentPrimary n100 · contentSecondary n450 · accentSolid b500 · n800 */
+    :root{--bg:#0E0F12;--card:#16181D;--fg:#E7E9EF;--muted:#8B92A2;--primary:#3563DC;--line:#2A2D36}
     *{box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
-         background:radial-gradient(1100px 560px at 50% -12%,#12203f 0%,var(--bg) 58%);
+         background:var(--bg);
          color:var(--fg);display:flex;min-height:100vh;margin:0;align-items:center;
          justify-content:center;padding:24px}
     .card{width:100%;max-width:360px;text-align:center}
     .logo{width:88px;height:88px;border-radius:12px;object-fit:cover;
-          box-shadow:0 12px 44px rgba(47,107,255,.38);margin-bottom:18px}
+          box-shadow:0 12px 44px rgba(0,0,0,.55);margin-bottom:18px}
     h1{font-size:22px;margin:0 0 6px;letter-spacing:.2px}
     .who{color:var(--muted);font-size:15px;line-height:1.5;margin:0 0 26px}
     .u{color:var(--primary);font-weight:700}
