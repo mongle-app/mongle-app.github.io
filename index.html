@@ -21,8 +21,9 @@
           /* Логоны сүүдэр ч цэнхэр байв — тэмдэг өөрөө хар хайрцагтай тул
              зөвхөн гүнийг өгөх саарал сүүдэр үлдээв. */
           box-shadow:0 12px 44px rgba(0,0,0,.55);margin-bottom:18px}
-    h1{font-size:26px;margin:0 0 6px;letter-spacing:.2px}
-    .tag{color:var(--muted);font-size:15px;margin:0 0 28px}
+    /* Доод зай нь урьд `.tag` мөрөнд байсныг ӨВЛӨВ: тайлбар хасагдсанаар
+       гарчиг товчнуудад наалдаж, карт дээд талаараа шахагдаж байв. */
+    h1{font-size:26px;margin:0 0 20px;letter-spacing:.2px}
     .btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;
          padding:15px;border-radius:14px;background:var(--primary);color:#fff;text-decoration:none;
          font-weight:600;font-size:15px;border:none;width:100%}
@@ -35,9 +36,8 @@
   <div class="card">
     <img class="logo" src="/logo.png" alt="Mongle">
     <h1>Mongle</h1>
-    <p class="tag">Монголчуудын шинэ сошиал</p>
     <a class="btn" href="https://github.com/mongle-app/mongle/releases/latest/download/mongle.apk">Android татах (APK)</a>
-    <span class="btn ghost" style="opacity:.5">iOS (удахгүй)</span>
+    <a class="btn ghost" href="https://testflight.apple.com/join/Wuwp1Aqr">iOS татах (TestFlight)</a>
     <p class="foot">© Mongle</p>
   </div>
 </body>
