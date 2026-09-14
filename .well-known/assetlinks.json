@@ -4,7 +4,10 @@
     "target": {
       "namespace": "android_app",
       "package_name": "mn.bilguun.mongle",
-      "sha256_cert_fingerprints": ["EC:44:F4:43:6B:7F:22:01:4A:47:60:3C:63:B9:8E:FC:1D:7F:FB:C3:D6:91:F1:FB:3B:74:CF:9E:F5:2B:59:E1"]
+      "sha256_cert_fingerprints": [
+        "97:26:CA:36:A4:FC:65:DD:1A:F7:36:E1:3D:41:70:39:FB:9E:19:F0:CE:E5:82:E5:EF:52:86:2B:88:C3:CC:85",
+        "EC:44:F4:43:6B:7F:22:01:4A:47:60:3C:63:B9:8E:FC:1D:7F:FB:C3:D6:91:F1:FB:3B:74:CF:9E:F5:2B:59:E1"
+      ]
     }
   }
 ]
