@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delete your account / Бүртгэл устгах — Mongle</title>
+  <link rel="icon" href="/logo.png">
+  <style>
+    /* privacy/index.html-тэй НЭГ загвар (аппын палитр) */
+    :root{--bg:#0E0F12;--card:#16181D;--fg:#E7E9EF;--muted:#8B92A2;--primary:#3563DC;--line:#2A2D36}
+    *{box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+         background:var(--bg);
+         color:var(--fg);margin:0;padding:32px 20px 64px;line-height:1.6}
+    .wrap{max-width:680px;margin:0 auto}
+    .top{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+    .logo{width:44px;height:44px;border-radius:12px;object-fit:cover}
+    .brand{font-weight:600;font-size:17px}
+    .langbar{display:flex;gap:8px;margin-bottom:28px}
+    .langbar a{display:inline-block;padding:7px 14px;border-radius:999px;font-size:13px;
+               text-decoration:none;background:var(--card);border:1px solid var(--line);color:var(--fg)}
+    h1{font-size:26px;margin:0 0 6px;letter-spacing:.2px}
+    .date{color:var(--muted);font-size:13px;margin:0 0 28px}
+    h2{font-size:17px;margin:32px 0 12px}
+    p{margin:0 0 14px}
+    ol{margin:0 0 14px;padding-left:22px}
+    ol li{margin-bottom:6px}
+    ul{margin:0;padding:0;list-style:none}
+    ul li{background:var(--card);border:1px solid var(--line);border-radius:12px;
+       padding:13px 15px;margin-bottom:8px;font-size:15px}
+    .callout{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--primary);
+             border-radius:12px;padding:16px;margin-top:8px}
+    .callout b{display:block;margin-bottom:6px}
+    a{color:var(--primary)}
+    .foot{color:var(--muted);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:20px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo" src="/logo.png" alt="Mongle">
+      <span class="brand">Mongle</span>
+    </div>
+    <div class="langbar">
+      <a href="#en">English</a>
+      <a href="#mn">Монгол</a>
+    </div>
+
+    <!-- ⚠️ English эхэнд — Google Play / App Store-ийн шалгагч эхний дэлгэцээс
+         уншдаг. Google Play Data safety-ийн «account deletion URL» энэ хуудас. -->
+    <section id="en" lang="en">
+      <h1>Delete your account</h1>
+      <p class="date">Mongle · mn.bilguun.mongle</p>
+
+      <p>You can permanently delete your Mongle account and all data
+      associated with it at any time. There is no waiting period: deletion is
+      immediate and cannot be undone.</p>
+
+      <h2>Option 1 — In the app (recommended)</h2>
+      <ol>
+        <li>Open Mongle and go to <b>Settings</b>.</li>
+        <li>Tap <b>Account</b> → <b>Delete account</b>.</li>
+        <li>Re-enter your password to confirm.</li>
+      </ol>
+      <p>Your account is deleted right away and you are signed out.</p>
+
+      <h2>Option 2 — By email (if you no longer have the app)</h2>
+      <p>Send an email to
+      <a href="mailto:mongleapp@gmail.com?subject=Delete%20my%20Mongle%20account">mongleapp@gmail.com</a>
+      from the email address registered to your account, with the subject
+      <b>“Delete my Mongle account”</b>. We verify the sender address and delete
+      the account within <b>7 days</b>, then confirm by reply.</p>
+
+      <h2>What is deleted</h2>
+      <ul>
+        <li>Profile (name, username, email, birthday, gender, avatar, cover photo)</li>
+        <li>Posts, videos, stories, highlights, moments (“Now”) and their media files</li>
+        <li>Comments, likes, reactions, saves, follows and followers</li>
+        <li>Notes, notifications, push tokens and app settings</li>
+        <li>Your direct and group conversations and the messages you sent</li>
+      </ul>
+
+      <div class="callout">
+        <b>What may remain</b>
+        Messages you sent to other people stay visible to those recipients
+        without your name, as an anonymous deleted user — the same way other
+        messaging apps work. Media attached to those messages is retained for
+        the recipients. Nothing is kept that identifies you.
+      </div>
+
+      <h2>Retention</h2>
+      <p>Account data is removed immediately. Media files in cloud storage are
+      purged by an automatic cleanup job within 24 hours. Server backups are
+      rotated within 30 days.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about deletion:
+      <a href="mailto:mongleapp@gmail.com">mongleapp@gmail.com</a>.</p>
+    </section>
+
+    <hr class="sep" style="border:0;border-top:1px solid var(--line);margin:56px 0 40px">
+
+    <section id="mn" lang="mn">
+      <h1>Бүртгэл устгах</h1>
+      <p class="date">Mongle · mn.bilguun.mongle</p>
+
+      <p>Та Mongle бүртгэлээ болон түүнтэй холбоотой бүх өгөгдлийг хүссэн
+      үедээ бүрмөсөн устгаж болно. Хүлээх хугацаа байхгүй: устгал шууд
+      хийгдэж, сэргээх боломжгүй.</p>
+
+      <h2>1-р зам — Аппын дотроос (санал болгож байна)</h2>
+      <ol>
+        <li>Mongle-ыг нээж <b>Тохиргоо</b> руу орно.</li>
+        <li><b>Бүртгэл</b> → <b>Бүртгэл устгах</b> дарна.</li>
+        <li>Нууц үгээ дахин оруулж баталгаажуулна.</li>
+      </ol>
+      <p>Бүртгэл шууд устаж, та системээс гарна.</p>
+
+      <h2>2-р зам — Имэйлээр (апп байхгүй бол)</h2>
+      <p>Бүртгэлтэй имэйл хаягаасаа
+      <a href="mailto:mongleapp@gmail.com?subject=Mongle%20%D0%B1%D2%AF%D1%80%D1%82%D0%B3%D1%8D%D0%BB%20%D1%83%D1%81%D1%82%D0%B3%D0%B0%D1%85">mongleapp@gmail.com</a>
+      хаягт <b>«Mongle бүртгэл устгах»</b> гарчигтай захиа илгээнэ. Илгээгчийн
+      хаягийг баталгаажуулаад <b>7 хоногийн дотор</b> устгаж, хариу бичнэ.</p>
+
+      <h2>Юу устах вэ</h2>
+      <ul>
+        <li>Профайл (нэр, хэрэглэгчийн нэр, имэйл, төрсөн өдөр, хүйс, аватар, ковер зураг)</li>
+        <li>Пост, бичлэг, стори, онцлох, яг одоо болон тэдгээрийн медиа файл</li>
+        <li>Сэтгэгдэл, зүрх, реакц, хадгалсан, дагалт ба дагагчид</li>
+        <li>Тэмдэглэл, мэдэгдэл, push token, аппын тохиргоо</li>
+        <li>Таны хувийн ба бүлгийн яриа, илгээсэн зурвасууд</li>
+      </ul>
+
+      <div class="callout">
+        <b>Юу үлдэж болох вэ</b>
+        Бусдад илгээсэн зурвас нь таны нэргүйгээр, «устсан хэрэглэгч» гэж
+        хүлээн авагчид харагдсаар байна — бусад мессенжерийн адил. Тэр
+        зурваст хавсаргасан медиа хүлээн авагчид үлдэнэ. Таныг таних ямар ч
+        мэдээлэл хадгалагдахгүй.
+      </div>
+
+      <h2>Хадгалах хугацаа</h2>
+      <p>Бүртгэлийн өгөгдөл шууд устана. Үүлэн хадгалалт дахь медиа файлыг
+      автомат цэвэрлэгээ 24 цагийн дотор арилгана. Серверийн нөөц хуулбар
+      30 хоногт солигдоно.</p>
+
+      <h2>Холбоо барих</h2>
+      <p>Устгалтай холбоотой асуулт:
+      <a href="mailto:mongleapp@gmail.com">mongleapp@gmail.com</a>.</p>
+    </section>
+
+    <p class="foot">
+      <a href="/privacy/">Privacy Policy / Нууцлалын бодлого</a> ·
+      <a href="/terms/">Terms of Use / Үйлчилгээний нөхцөл</a> · © 2026 Mongle
+    </p>
+  </div>
+</body>
+</html>
