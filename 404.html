@@ -42,28 +42,40 @@
     <a class="btn ghost" href="https://testflight.apple.com/join/Wuwp1Aqr">iOS (TestFlight)</a>
   </div>
   <script>
-    var m = location.pathname.match(/^\/u\/([^\/?#]+)/);
-    var username = m && m[1] ? decodeURIComponent(m[1]) : null;
+    // /u/<username> · /p/<postId> · /v/<videoId> (пост·бичлэг — v1.3.13+).
+    var m = location.pathname.match(/^\/([upv])\/([^\/?#]+)/);
+    var kind = m ? m[1] : null;
+    var id = m && m[2] ? decodeURIComponent(m[2]) : null;
     var ua = navigator.userAgent || '';
     var isAndroid = /android/i.test(ua);
     var isIOS = /iphone|ipad|ipod/i.test(ua);
 
-    if (username) {
-      document.getElementById('who').innerHTML =
-        '<span class="u">@' + username + '</span> профайлыг аппликейшнээр үзнэ үү.';
+    var who = document.getElementById('who');
+    if (kind === 'u' && id) {
+      // textContent — URL-ээс ирсэн утгыг HTML болгож оруулахгүй.
+      var span = document.createElement('span');
+      span.className = 'u';
+      span.textContent = '@' + id;
+      who.textContent = '';
+      who.appendChild(span);
+      who.appendChild(document.createTextNode(' профайлыг аппликейшнээр үзнэ үү.'));
+    } else if (kind === 'p' && id) {
+      who.textContent = 'Энэ постыг аппликейшнээр үзнэ үү.';
+    } else if (kind === 'v' && id) {
+      who.textContent = 'Энэ бичлэгийг аппликейшнээр үзнэ үү.';
     }
 
     document.getElementById('open').addEventListener('click', function () {
-      if (!username) { location.href = '/'; return; }
-      var u = encodeURIComponent(username);
+      if (!id) { location.href = '/'; return; }
+      var path = '/' + kind + '/' + encodeURIComponent(id);
       if (isAndroid) {
-        // v1.0.5-ийн App Links intent-filter-ыг package-аар шууд онилж нээнэ
+        // App Links intent-filter-ыг package-аар шууд онилж нээнэ
         // (browser доторх ижил-домэйн хязгаарлалтыг тойроно).
-        location.href = 'intent://mongle-app.github.io/u/' + u +
+        location.href = 'intent://mongle-app.github.io' + path +
           '#Intent;scheme=https;package=mn.bilguun.mongle;end';
       } else if (isIOS) {
-        // Custom scheme — v1.0.6-д бүртгэгдэнэ (одоохондоо ажиллахгүй байж болно).
-        location.href = 'mongle://u/' + u;
+        // Custom scheme — одоохондоо бүртгэгдээгүй (ажиллахгүй байж болно).
+        location.href = 'mongle:/' + path;
       }
     });
   </script>
