@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mongle тестэд нэгдэх</title>
+  <meta name="description" content="Mongle-ийг Google Play-д гаргахад туслаарай — 14 хоногийн хаалттай тест.">
+  <link rel="icon" href="/logo.png">
+  <style>
+    /* Аппын палитраас ШУУД (privacy · terms-тэй нэг): canvas · raised ·
+       contentPrimary · contentSecondary · accentSolid · line */
+    :root{--bg:#0C1014;--card:#16181D;--fg:#E7E9EF;--muted:#8B92A2;--primary:#3563DC;--line:#2A2D36;--ok:#3FB37F;--warn:#E0A43A}
+    *{box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
+         background:var(--bg);color:var(--fg);margin:0;padding:28px 16px 64px;line-height:1.6}
+    .wrap{max-width:620px;margin:0 auto}
+    .top{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+    .logo{width:44px;height:44px;border-radius:12px;object-fit:cover}
+    .brand{font-weight:600;font-size:17px}
+    h1{font-size:25px;line-height:1.3;margin:0 0 10px;text-wrap:balance}
+    .lead{color:var(--fg);font-size:16px;margin:0 0 8px}
+    .sub{color:var(--muted);font-size:14px;margin:0 0 4px}
+    h2{font-size:18px;margin:36px 0 12px}
+    p{margin:0 0 12px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:10px}
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 6px}
+    .fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 8px;text-align:center}
+    .fact b{display:block;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+    .fact span{color:var(--muted);font-size:12px}
+    ol.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+    ol.steps li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;
+                padding:14px 14px 14px 54px;margin-bottom:10px;counter-increment:s}
+    ol.steps li::before{content:counter(s);position:absolute;left:14px;top:14px;width:28px;height:28px;
+                border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:14px;
+                display:grid;place-items:center}
+    ol.steps .t{display:block;font-weight:700;margin-bottom:4px}
+    .btn{display:block;text-align:center;background:var(--primary);color:#fff;text-decoration:none;
+         font-weight:600;border-radius:999px;padding:13px 16px;margin-top:10px;border:0;width:100%;font-size:15px;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
+    .btn:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+    .mail{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+    .mail code{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:10px;
+               padding:10px 12px;font-size:14px;overflow-wrap:anywhere;user-select:all}
+    .mail button{flex:none;width:auto;margin:0;padding:10px 16px}
+    ul.list{list-style:none;margin:0;padding:0}
+    ul.list li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:15px}
+    .note{border-left:3px solid var(--warn)}
+    .good{border-left:3px solid var(--ok)}
+    a{color:var(--primary)}
+    .foot{color:var(--muted);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:20px}
+    @media (max-width:360px){.facts{grid-template-columns:1fr 1fr 1fr}.fact b{font-size:20px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo" src="/logo.png" alt="Mongle">
+      <span class="brand">Mongle</span>
+    </div>
+
+    <h1>Mongle-ийг Google Play&#8209;д гаргахад туслаарай</h1>
+    <p class="lead">Mongle бол зураг, бичлэг хуваалцаж, найзуудтайгаа чатладаг монгол апп.
+    Бид жижиг баг бөгөөд Google Play-д нийтлэхийн тулд таны 14 хоногийн тусламж хэрэгтэй байна.</p>
+
+    <div class="facts" aria-label="Тестийн шаардлага">
+      <div class="fact"><b>12+</b><span>тестер</span></div>
+      <div class="fact"><b>14</b><span>хоног</span></div>
+      <div class="fact"><b>~5</b><span>минут / өдөр</span></div>
+    </div>
+
+    <h2>Яагаад тест хэрэгтэй вэ?</h2>
+    <p>Google шинэ хөгжүүлэгчийн аппыг Play Store-д нийтлэхээс өмнө
+    <b>хаалттай тест</b> хийлгэдэг: дор хаяж 12 хүн аппыг <b>14 хоног тасралтгүй</b>
+    суулгаж, бодитоор ашиглах ёстой.</p>
+    <div class="card note">Бид эхний удаа хүсэлт гаргахад Google «тест хангалтгүй» гэж буцаасан.
+    Google тестерүүд аппыг <b>үнэхээр ашиглаж байгаа эсэхийг</b> хардаг. Зүгээр суулгаад
+    орхивол тооцогдохгүй. Тиймээс өдөр бүр хэдхэн минут нээж ашиглах нь хамгийн чухал.</div>
+
+    <h2>Хэрхэн нэгдэх вэ</h2>
+    <ol class="steps">
+      <li>
+        <span class="t">Gmail хаягаа бидэнд илгээнэ</span>
+        Утсан дээрх Play Store-д нэвтэрсэн <b>Gmail</b> хаягаа энэ бүлэгт бичих эсвэл
+        доорх хаяг руу илгээнэ үү. Бид таныг тестерийн жагсаалтад нэмнэ.
+        <div class="mail">
+          <code id="mail">support@mongleapp.com</code>
+          <button class="btn ghost" id="copy" type="button">Хуулах</button>
+        </div>
+      </li>
+      <li>
+        <span class="t">«Нэмсэн» гэсэн хариуг хүлээнэ</span>
+        Нэмэгдээгүй байхад доорх холбоос «олдсонгүй» гэж гарна. Хариу ирэхийг хүлээгээрэй.
+      </li>
+      <li>
+        <span class="t">Тестер болно</span>
+        Утаснаасаа доорх холбоосыг нээгээд <b>«Become a tester» / «Тестер болох»</b>
+        товчийг дарна. Илгээсэн Gmail-ээрээ нэвтэрсэн байх ёстой.
+        <a class="btn" href="https://play.google.com/apps/testing/mn.bilguun.mongle">Тестер болох</a>
+      </li>
+      <li>
+        <span class="t">Play Store-оос суулгана</span>
+        Тестер болсны дараа Mongle-ийг Play Store-оос суулгана.
+        <a class="btn ghost" href="https://play.google.com/store/apps/details?id=mn.bilguun.mongle">Play Store-оос суулгах</a>
+      </li>
+    </ol>
+    <div class="card note"><b>Заавал Play Store-оос суулгана уу.</b> Google зөвхөн Play Store-оос
+    суулгасныг тест гэж тооцдог. Өмнө нь APK файлаар суулгасан бол эхлээд устгаад
+    Play Store-оос дахин суулгаарай.</div>
+
+    <h2>14 хоногт юу хийх вэ</h2>
+    <div class="card good">Өдөр бүр <b>ядаж нэг удаа</b> нээгээд хэдэн минут ашиглахад хангалттай.
+    Санаа өгвөл:</div>
+    <ul class="list">
+      <li>Зураг эсвэл бичлэг нийтлэх</li>
+      <li>Стори тавих, камерын эффект туршиж үзэх</li>
+      <li>Бусдын пост, бичлэг үзэж, зүрх дарах, сэтгэгдэл бичих</li>
+      <li>Хэн нэгнийг дагах, зурвас бичих</li>
+      <li>Зурвас таб дахь «Нээлттэй бүлгүүд»-ээс бүлэгт нэгдэх</li>
+    </ul>
+    <div class="card note"><b>14 хоног дуустал</b> аппаа устгах, тестээс гарах хэрэггүй.
+    Эс бөгөөс Google тоолохоо больж, бид дахин эхнээс нь хүлээх болно.</div>
+
+    <h2>Алдаа олвол</h2>
+    <p>Апп дотор <b>Тохиргоо → «Санал / Алдаа»</b>-аас бидэнд шууд бичнэ үү. Жижиг ч гэсэн
+    алдаа, санал бүр бидэнд маш их тус болно.</p>
+
+    <h2>Анхаарах зүйл</h2>
+    <ul class="list">
+      <li>Тест нь жинхэнэ апп: таны нийтэлсэн зүйл бусад хэрэглэгчдэд харагдана.</li>
+      <li>13-аас дээш настай хүн оролцоно.</li>
+      <li>Бүртгэлээ хүссэн үедээ Тохиргоо → Бүртгэл-ээс устгаж болно.</li>
+      <li>Дэлгэрэнгүйг <a href="/privacy/#mn">Нууцлалын бодлого</a>,
+          <a href="/terms/#mn">Үйлчилгээний нөхцөл</a>-өөс уншина уу.</li>
+    </ul>
+
+    <p class="foot">Тусалж байгаад баярлалаа! Асуулт байвал support@mongleapp.com · © 2026 Mongle</p>
+  </div>
+  <script>
+    (function () {
+      var btn = document.getElementById("copy");
+      var mail = document.getElementById("mail");
+      if (!btn || !mail) return;
+      btn.addEventListener("click", function () {
+        var text = mail.textContent.trim();
+        var done = function () { btn.textContent = "Хуулагдлаа"; setTimeout(function () { btn.textContent = "Хуулах"; }, 1800); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () { select(); });
+        } else { select(); }
+        function select() {
+          var r = document.createRange(); r.selectNodeContents(mail);
+          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
