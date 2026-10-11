@@ -2,134 +2,150 @@
 <html lang="mn">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Mongle тестэд нэгдэх</title>
-  <meta name="description" content="Mongle-ийг Google Play-д гаргахад туслаарай — 14 хоногийн хаалттай тест.">
+  <meta name="description" content="Mongle-ийг Play Store-д гаргахад туслаарай — 14 хоног, өдөрт 5 минут.">
+  <meta name="theme-color" content="#0C1014">
   <link rel="icon" href="/logo.png">
   <style>
-    /* Аппын палитраас ШУУД (privacy · terms-тэй нэг): canvas · raised ·
-       contentPrimary · contentSecondary · accentSolid · line */
-    :root{--bg:#0C1014;--card:#16181D;--fg:#E7E9EF;--muted:#8B92A2;--primary:#3563DC;--line:#2A2D36;--ok:#3FB37F;--warn:#E0A43A}
+    /* Аппын палитраас (lib/theme): canvas · raised · line · contentPrimary ·
+       contentSecondary. Аксент МОНОХРОМ (аппынхтай нэг) — үндсэн товч цагаан. */
+    :root{
+      --bg:#0C1014;--card:#14181D;--line:#252A32;--fg:#E7E9EF;--muted:#8B92A2;
+      --btn:#E7E9EF;--btn-fg:#0C1014;--radius:16px
+    }
     *{box-sizing:border-box}
-    body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
-         background:var(--bg);color:var(--fg);margin:0;padding:28px 16px 64px;line-height:1.6}
-    .wrap{max-width:620px;margin:0 auto}
-    .top{display:flex;align-items:center;gap:12px;margin-bottom:24px}
-    .logo{width:44px;height:44px;border-radius:12px;object-fit:cover}
-    .brand{font-weight:600;font-size:17px}
-    h1{font-size:25px;line-height:1.3;margin:0 0 10px;text-wrap:balance}
-    .lead{color:var(--fg);font-size:16px;margin:0 0 8px}
-    .sub{color:var(--muted);font-size:14px;margin:0 0 4px}
-    h2{font-size:18px;margin:36px 0 12px}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;background:var(--bg);color:var(--fg);
+         font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,Roboto,"Segoe UI",sans-serif;
+         line-height:1.55;-webkit-font-smoothing:antialiased}
+    main{max-width:520px;margin:0 auto;padding:48px 20px calc(48px + env(safe-area-inset-bottom))}
+
+    /* Толгой */
+    .hero{text-align:center}
+    .logo{width:72px;height:72px;border-radius:18px;display:block;margin:0 auto 20px;
+          box-shadow:0 8px 24px rgba(0,0,0,.35)}
+    .tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.3px;color:var(--muted);
+         border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin-bottom:16px}
+    h1{font-size:26px;line-height:1.25;font-weight:700;margin:0 0 12px;text-wrap:balance}
+    .lead{color:var(--muted);font-size:16px;margin:0 auto;max-width:400px;text-wrap:pretty}
+
+    /* Тоо */
+    .stats{display:flex;margin:32px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+    .stat{flex:1;text-align:center;padding:16px 4px}
+    .stat + .stat{border-left:1px solid var(--line)}
+    .stat b{display:block;font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+    .stat span{font-size:12px;color:var(--muted)}
+
+    h2{font-size:13px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:44px 0 14px}
     p{margin:0 0 12px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:10px}
-    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 6px}
-    .fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 8px;text-align:center}
-    .fact b{display:block;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
-    .fact span{color:var(--muted);font-size:12px}
-    ol.steps{list-style:none;margin:0;padding:0;counter-reset:s}
-    ol.steps li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;
-                padding:14px 14px 14px 54px;margin-bottom:10px;counter-increment:s}
-    ol.steps li::before{content:counter(s);position:absolute;left:14px;top:14px;width:28px;height:28px;
-                border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:14px;
-                display:grid;place-items:center}
-    ol.steps .t{display:block;font-weight:700;margin-bottom:4px}
-    .btn{display:block;text-align:center;background:var(--primary);color:#fff;text-decoration:none;
-         font-weight:600;border-radius:999px;padding:13px 16px;margin-top:10px;border:0;width:100%;font-size:15px;cursor:pointer}
-    .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
-    .btn:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
-    .mail{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
-    .mail code{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:10px;
-               padding:10px 12px;font-size:14px;overflow-wrap:anywhere;user-select:all}
-    .mail button{flex:none;width:auto;margin:0;padding:10px 16px}
-    ul.list{list-style:none;margin:0;padding:0}
-    ul.list li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:15px}
-    .note{border-left:3px solid var(--warn)}
-    .good{border-left:3px solid var(--ok)}
-    a{color:var(--primary)}
-    .foot{color:var(--muted);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:20px}
-    @media (max-width:360px){.facts{grid-template-columns:1fr 1fr 1fr}.fact b{font-size:20px}}
+    .why{font-size:16px}
+
+    /* Алхам — босоо шугамтай */
+    .steps{list-style:none;margin:0;padding:0}
+    .step{position:relative;display:flex;gap:16px;padding-bottom:24px}
+    .step:last-child{padding-bottom:0}
+    .step::before{content:"";position:absolute;left:15px;top:36px;bottom:4px;width:2px;background:var(--line)}
+    .step:last-child::before{display:none}
+    .num{flex:none;width:32px;height:32px;border-radius:50%;border:2px solid var(--line);
+         display:grid;place-items:center;font-size:14px;font-weight:700;background:var(--bg)}
+    .body{flex:1;min-width:0;padding-top:4px}
+    .body b{display:block;font-size:16px;margin-bottom:2px}
+    .body p{color:var(--muted);font-size:15px;margin:0}
+
+    .btn{display:block;text-align:center;text-decoration:none;font-weight:600;font-size:15px;
+         border-radius:999px;padding:13px 16px;margin-top:12px;background:var(--btn);color:var(--btn-fg)}
+    .btn.alt{background:transparent;color:var(--fg);border:1px solid var(--line)}
+    .btn:active{opacity:.85}
+    .btn:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+
+    /* 14 хоног */
+    .checks{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+    .checks li{display:flex;gap:12px;padding:14px 16px;font-size:15px}
+    .checks li + li{border-top:1px solid var(--line)}
+    .checks svg{flex:none;margin-top:3px}
+
+    .small{color:var(--muted);font-size:13px;margin-top:40px;text-align:center}
+    .small a{color:var(--fg)}
+    .thanks{text-align:center;font-weight:600;margin-top:28px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="top">
+  <main>
+    <section class="hero">
       <img class="logo" src="/logo.png" alt="Mongle">
-      <span class="brand">Mongle</span>
+      <span class="tag">ХААЛТТАЙ ТЕСТ</span>
+      <h1>Mongle-ийг Play Store&#8209;д гаргахад туслаарай</h1>
+      <p class="lead">Сайн байна уу! Би Mongle аппыг ганцаараа хийж байгаа.
+      Play Store-д гаргахын тулд надад таны тусламж хэрэгтэй байна.</p>
+    </section>
+
+    <div class="stats" aria-label="Юу хэрэгтэй вэ">
+      <div class="stat"><b>12</b><span>хүн</span></div>
+      <div class="stat"><b>14</b><span>хоног</span></div>
+      <div class="stat"><b>5</b><span>минут / өдөр</span></div>
     </div>
 
-    <h1>Mongle-ийг Play Store&#8209;д гаргахад туслаарай</h1>
-    <p class="lead">Сайн байна уу! Би Mongle гэдэг аппыг ганцаараа хийж байгаа.
-    Зураг, бичлэг хуваалцаж, чатладаг монгол апп. Play Store-д гаргахын тулд надад
-    таны тусламж хэрэгтэй байна.</p>
-
-    <div class="facts" aria-label="Юу хэрэгтэй вэ">
-      <div class="fact"><b>12</b><span>хүн</span></div>
-      <div class="fact"><b>14</b><span>хоног</span></div>
-      <div class="fact"><b>5</b><span>минут / өдөр</span></div>
-    </div>
-
-    <h2>Яагаад?</h2>
-    <p>Google шинэ аппыг гаргахаас өмнө <b>12 хүнээр 14 хоног</b> туршуулахыг шаарддаг.
-    Анх удаа «туршилт хангалтгүй» гээд буцаасан. Тиймээс зүгээр суулгаад орхих биш,
-    <b>өдөр бүр жаахан ашиглах</b> хэрэгтэй.</p>
+    <h2>Яагаад</h2>
+    <p class="why">Google шинэ аппыг гаргахаас өмнө 12 хүнээр 14 хоног туршуулахыг шаарддаг.
+    Анх удаа «туршилт хангалтгүй» гээд буцаасан. Тиймээс суулгаад орхих биш,
+    өдөр бүр жаахан ашиглах хэрэгтэй.</p>
 
     <h2>Яаж нэгдэх вэ</h2>
     <ol class="steps">
-      <li>
-        <span class="t">Gmail-ээ надад явуулаарай</span>
-        Play Store-д нэвтэрсэн Gmail хаягаа бүлэгт бичих эсвэл энд явуулаарай:
-        <div class="mail">
-          <code id="mail">support@mongleapp.com</code>
-          <button class="btn ghost" id="copy" type="button">Хуулах</button>
+      <li class="step">
+        <span class="num">1</span>
+        <div class="body">
+          <b>Gmail-ээ бүлэгт бичээрэй</b>
+          <p>Утсан дээрх Play Store-д нэвтэрсэн Gmail хаягаа.</p>
         </div>
       </li>
-      <li>
-        <span class="t">Би таныг нэмээд хэлнэ</span>
-        Нэмэхээс өмнө доорх товч ажиллахгүй.
+      <li class="step">
+        <span class="num">2</span>
+        <div class="body">
+          <b>Би таныг нэмээд хэлнэ</b>
+          <p>Нэмэхээс өмнө доорх товч ажиллахгүй.</p>
+        </div>
       </li>
-      <li>
-        <span class="t">«Тестер болох» дарна</span>
-        Явуулсан Gmail-ээрээ нэвтэрсэн байгаарай.
-        <a class="btn" href="https://play.google.com/apps/testing/mn.bilguun.mongle">Тестер болох</a>
+      <li class="step">
+        <span class="num">3</span>
+        <div class="body">
+          <b>«Тестер болох» дарна</b>
+          <p>Бүлэгт бичсэн Gmail-ээрээ нэвтэрсэн байгаарай.</p>
+          <a class="btn" href="https://play.google.com/apps/testing/mn.bilguun.mongle">Тестер болох</a>
+        </div>
       </li>
-      <li>
-        <span class="t">Play Store-оос суулгана</span>
-        APK-аар биш, заавал Play Store-оос. Өмнө нь APK-аар суулгасан бол устгаад дахин суулгаарай.
-        <a class="btn ghost" href="https://play.google.com/store/apps/details?id=mn.bilguun.mongle">Play Store-оос суулгах</a>
+      <li class="step">
+        <span class="num">4</span>
+        <div class="body">
+          <b>Play Store-оос суулгана</b>
+          <p>APK-аар биш, заавал Play Store-оос. Өмнө нь APK-аар суулгасан бол устгаад дахин суулгаарай.</p>
+          <a class="btn alt" href="https://play.google.com/store/apps/details?id=mn.bilguun.mongle">Play Store-оос суулгах</a>
+        </div>
       </li>
     </ol>
 
     <h2>14 хоногт</h2>
-    <ul class="list">
-      <li>Өдөрт нэг удаа нээгээд жаахан ашиглаарай: зураг тавих, стори хийх, бусдын пост үзэх, чатлах.</li>
-      <li>14 хоног дуустал аппаа устгахгүй байгаарай.</li>
-      <li>Алдаа олвол Тохиргоо → «Санал / Алдаа»-аас надад бичээрэй.</li>
+    <ul class="checks">
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E7E9EF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        <span>Өдөрт нэг удаа нээгээд жаахан ашиглаарай: зураг тавих, стори хийх, бусдын пост үзэх, чатлах.</span>
+      </li>
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E7E9EF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        <span>14 хоног дуустал аппаа устгахгүй байгаарай.</span>
+      </li>
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E7E9EF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        <span>Алдаа олвол Тохиргоо → «Санал / Алдаа»-аас надад бичээрэй.</span>
+      </li>
     </ul>
 
-    <p class="sub" style="margin-top:20px">Таны нийтэлсэн зүйл бусдад харагдана. Бүртгэлээ хүссэн
-    үедээ Тохиргоо → Бүртгэл-ээс устгаж болно.
-    <a href="/privacy/#mn">Нууцлалын бодлого</a> · <a href="/terms/#mn">Үйлчилгээний нөхцөл</a></p>
+    <p class="thanks">Тусалж байгаад баярлалаа!</p>
 
-    <p class="foot">Тусалж байгаад баярлалаа! support@mongleapp.com · © 2026 Mongle</p>
-  </div>
-  <script>
-    (function () {
-      var btn = document.getElementById("copy");
-      var mail = document.getElementById("mail");
-      if (!btn || !mail) return;
-      btn.addEventListener("click", function () {
-        var text = mail.textContent.trim();
-        var done = function () { btn.textContent = "Хуулагдлаа"; setTimeout(function () { btn.textContent = "Хуулах"; }, 1800); };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(done, function () { select(); });
-        } else { select(); }
-        function select() {
-          var r = document.createRange(); r.selectNodeContents(mail);
-          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-        }
-      });
-    })();
-  </script>
+    <p class="small">Таны нийтэлсэн зүйл бусдад харагдана. Бүртгэлээ хүссэн үедээ
+    Тохиргоо → Бүртгэл-ээс устгаж болно.<br>
+    <a href="/privacy/#mn">Нууцлалын бодлого</a> · <a href="/terms/#mn">Үйлчилгээний нөхцөл</a> · © 2026 Mongle</p>
+  </main>
 </body>
 </html>
