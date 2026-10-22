@@ -8,9 +8,10 @@
   <style>
     /* ⚠️ Загвар нь /privacy/-ийн ЯГ ХУУЛБАР — хоёр баримт бичиг нэг гэр бүл
        мэт харагдах ёстой. Аль нэгийг өөрчилбөл нөгөөг нь дагуул.
-       Аппын палитраас (lib/theme/tokens): canvas n950 · raised n900 ·
-       contentPrimary n100 · contentSecondary n450 · accentSolid b500 · n800 */
-    :root{--bg:#0C1014;--card:#16181D;--fg:#E7E9EF;--muted:#8B92A2;--primary:#3563DC;--line:#2A2D36}
+       Аппын харанхуй палитраас (lib/theme/tokens/color_primitives.dart):
+       canvas i950 · raised i900 · contentPrimary i100 · contentSecondary i400 ·
+       borderSubtle i775 · аксент МОНОХРОМ n100 · холбоос link (dark b400) */
+    :root{--bg:#0B1014;--card:#14191D;--fg:#E4E9ED;--muted:#99A7B5;--accent:#E7E9EF;--link:#5981F0;--line:#28333D}
     *{box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
          background:var(--bg);
@@ -29,10 +30,10 @@
     ul{margin:0;padding:0;list-style:none}
     li{background:var(--card);border:1px solid var(--line);border-radius:12px;
        padding:13px 15px;margin-bottom:8px;font-size:15px}
-    .callout{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--primary);
+    .callout{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
              border-radius:12px;padding:16px;margin-top:8px}
     .callout b{display:block;margin-bottom:6px}
-    a{color:var(--primary)}
+    a{color:var(--link)}
     .sep{border:0;border-top:1px solid var(--line);margin:56px 0 40px}
     .foot{color:var(--muted);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:20px}
   </style>

@@ -6,9 +6,11 @@
   <title>Mongle</title>
   <link rel="icon" href="/logo.png">
   <style>
-    /* Аппын палитраас ШУУД (lib/theme/tokens): canvas n950 · raised n900 ·
-       contentPrimary n100 · contentSecondary n450 · accentSolid b500 · n800 */
-    :root{--bg:#0C1014;--card:#16181D;--fg:#E7E9EF;--muted:#8B92A2;--primary:#3563DC;--line:#2A2D36}
+    /* Аппын харанхуй палитраас ШУУД (lib/theme/tokens/color_primitives.dart,
+       share-preview worker-тэй ижил): canvas i950 · raised i900 ·
+       contentPrimary i100 · contentSecondary i400 · borderSubtle i775 ·
+       аксент МОНОХРОМ — inverseSurface n100 / onInverseSurface n1000 */
+    :root{--bg:#0B1014;--card:#14191D;--fg:#E4E9ED;--muted:#99A7B5;--inv:#E7E9EF;--on-inv:#07080B;--line:#28333D}
     *{box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
          background:var(--bg);
@@ -19,9 +21,9 @@
           box-shadow:0 12px 44px rgba(0,0,0,.55);margin-bottom:18px}
     h1{font-size:22px;margin:0 0 6px;letter-spacing:.2px}
     .who{color:var(--muted);font-size:15px;line-height:1.5;margin:0 0 26px}
-    .u{color:var(--primary);font-weight:700}
+    .u{color:var(--fg);font-weight:700}
     .btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;
-         padding:15px;border-radius:12px;background:var(--primary);color:#fff;text-decoration:none;
+         padding:15px;border-radius:12px;background:var(--inv);color:var(--on-inv);text-decoration:none;
          font-weight:600;font-size:15px;border:none;width:100%;cursor:pointer;font-family:inherit;
          -webkit-tap-highlight-color:transparent}
     .btn:active{opacity:.85}

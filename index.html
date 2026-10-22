@@ -6,9 +6,11 @@
   <title>Mongle</title>
   <link rel="icon" href="/logo.png">
   <style>
-    /* Аппын палитраас ШУУД (lib/theme/tokens): canvas n950 · raised n900 ·
-       contentPrimary n100 · contentSecondary n450 · accentSolid b500 · n800 */
-    :root{--bg:#0C1014;--card:#16181D;--fg:#E7E9EF;--muted:#8B92A2;--primary:#3563DC;--line:#2A2D36}
+    /* Аппын харанхуй палитраас ШУУД (lib/theme/tokens/color_primitives.dart,
+       share-preview worker-тэй ижил): canvas i950 · raised i900 ·
+       contentPrimary i100 · contentSecondary i400 · borderSubtle i775 ·
+       аксент МОНОХРОМ — inverseSurface n100 / onInverseSurface n1000 */
+    :root{--bg:#0B1014;--card:#14191D;--fg:#E4E9ED;--muted:#99A7B5;--inv:#E7E9EF;--on-inv:#07080B;--line:#28333D}
     *{box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
          /* Цэнхэр туяа ХАСав — брэнд монохром (хар дэвсгэр дээр цагаан тэмдэг)
@@ -25,7 +27,7 @@
        гарчиг товчнуудад наалдаж, карт дээд талаараа шахагдаж байв. */
     h1{font-size:26px;margin:0 0 20px;letter-spacing:.2px}
     .btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;
-         padding:15px;border-radius:14px;background:var(--primary);color:#fff;text-decoration:none;
+         padding:15px;border-radius:14px;background:var(--inv);color:var(--on-inv);text-decoration:none;
          font-weight:600;font-size:15px;border:none;width:100%}
     .btn:active{opacity:.85}
     .btn.ghost{background:var(--card);color:var(--fg);border:1px solid var(--line)}
